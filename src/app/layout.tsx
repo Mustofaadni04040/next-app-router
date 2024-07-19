@@ -18,14 +18,14 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const [state, setState] = useState(0);
+  // const [state, setState] = useState(0);
 
   return (
     <html lang="en">
       <body className={inter.className}>
         <Navbar />
-        <button onClick={() => setState(state + 1)}>Click Saya</button>
-        <p>Layout: {state}</p>
+        {/* <button onClick={() => setState(state + 1)}>Click Saya</button>
+        <p>Layout: {state}</p> */}
         {children}
       </body>
     </html>
