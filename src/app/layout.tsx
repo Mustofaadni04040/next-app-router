@@ -5,8 +5,11 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Navbar from "./Navbar";
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 
 const inter = Inter({ subsets: ["latin"] });
+
+const disabledNavbar = ["/login", "/register"];
 
 // export const metadata: Metadata = {
 //   title: "Create Next App",
@@ -19,11 +22,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   // const [state, setState] = useState(0);
+  const pathname = usePathname();
 
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Navbar />
+        {!disabledNavbar.includes(pathname) && <Navbar />}
         {/* <button onClick={() => setState(state + 1)}>Click Saya</button>
         <p>Layout: {state}</p> */}
         {children}
