@@ -33,11 +33,11 @@ export default async function ProductPage({ params }: ProductPageProps) {
               />
               <div className="px-5 pb-5">
                 <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white truncate">
-                  {product.title}
+                  {product.name}
                 </h5>
                 <div className="flex items-center justify-between">
-                  <span className="text-3xl font-bold text-gray-900 dark:text-white">
-                    {product.price}$
+                  <span className="text-xl font-bold text-gray-900 dark:text-white">
+                    {product.price}
                   </span>
                   <button
                     type="button"

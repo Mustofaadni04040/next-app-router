@@ -14,8 +14,8 @@ export default async function DetailProductPage({ params }: { params: any }) {
         className="w-full object-cover aspect-square col-span-2"
       />
       <div className="bg-white py-4 px-6">
-        <h3>{data.detailProduct.title}</h3>
-        <p>Price: {data.detailProduct.price}$</p>
+        <h3>{data.detailProduct.name}</h3>
+        <p>Price: {data.detailProduct.price}</p>
       </div>
     </Modal>
   );
