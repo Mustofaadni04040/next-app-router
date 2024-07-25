@@ -7,7 +7,7 @@ import Navbar from "./Navbar";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ["latin"], display: "swap" });
 
 const disabledNavbar = ["/login", "/register"];
 
