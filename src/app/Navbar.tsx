@@ -1,12 +1,12 @@
 import { signIn, signOut, useSession } from "next-auth/react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 export default function Navbar() {
   const pathname = usePathname();
   const router = useRouter();
-  const { status }: { status: string } = useSession();
+  const { data: session, status }: { data: any; status: string } = useSession();
 
   return (
     <div className="bg-gray-800">
@@ -46,12 +46,15 @@ export default function Navbar() {
             </Link>
           </ul>
           {status === "authenticated" ? (
-            <button
-              className="bg-white rounded-md py-1 px-3 text-sm cursor-pointer"
-              onClick={() => signOut()}
-            >
-              Logout
-            </button>
+            <>
+              <h4 className="text-white">{session?.user?.fullname}</h4>
+              <button
+                className="bg-white rounded-md py-1 px-3 text-sm cursor-pointer"
+                onClick={() => signOut()}
+              >
+                Logout
+              </button>
+            </>
           ) : (
             <button
               className="bg-white rounded-md py-1 px-3 text-sm cursor-pointer"
