@@ -9,6 +9,7 @@ export default function LoginPage({ searchParams }: any) {
   const { push } = useRouter();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
+  const callbackUrl = searchParams.callbackUrl || "/product";
   async function handleLogin(e: any) {
     e.preventDefault();
     setIsLoading(true);
@@ -25,10 +26,10 @@ export default function LoginPage({ searchParams }: any) {
         redirect: false,
         email: e.target.email.value,
         password: e.target.password.value,
-        callbackUrl: searchParams.callbackUrl || "/product",
+        callbackUrl: callbackUrl,
       });
       if (!res?.error) {
-        push(searchParams.callbackUrl || "/product");
+        push(callbackUrl);
       } else {
         if (res.status === 401) {
           setError("Email or Password is Incorrect");
@@ -89,6 +90,20 @@ export default function LoginPage({ searchParams }: any) {
           >
             {isLoading ? "Loading..." : "Login to your account"}
           </button>
+        </form>
+        <div className="mt-3 flex flex-col gap-3">
+          <button
+            type="button"
+            className="flex items-center justify-center w-full bg-white gap-3 border border-slate-300 rounded-lg hover:bg-slate-100 hover:duration-200"
+            onClick={() => signIn("google", { callbackUrl, redirect: false })}
+          >
+            <img
+              src="https://cdn1.iconfinder.com/data/icons/google-s-logo/150/Google_Icons-09-512.png"
+              alt="google-icon"
+              className="w-8 h-8"
+            />
+            Login with Google
+          </button>
           <div className="flex justify-center text-sm font-medium text-gray-500 dark:text-gray-300">
             Not registered?{" "}
             <Link
@@ -98,7 +113,7 @@ export default function LoginPage({ searchParams }: any) {
               Create account
             </Link>
           </div>
-        </form>
+        </div>
       </div>
     </div>
   );
