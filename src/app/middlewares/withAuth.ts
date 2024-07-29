@@ -21,6 +21,7 @@ export default function withAuth(
         req,
         secret: process.env.NEXTAUTH_SECRET,
       });
+      // jika tidak login dan berada di register/login ketika sudah login
       if (!token && !authPage.includes(pathname)) {
         const url = new URL("/login", req.url);
         url.searchParams.set("callbackUrl", encodeURI(req.url));
